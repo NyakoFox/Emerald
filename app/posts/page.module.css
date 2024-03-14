@@ -1,14 +1,4 @@
-.sections {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 1rem 0;
-    padding-top: 4rem;
-}
-
-.section {
+.post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +11,7 @@
     transition: 0.1s;
 }
 
-.section:hover {
+.post:hover {
     border: 2px solid rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.25);
 }

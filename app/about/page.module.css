@@ -1,0 +1,14 @@
+.experience {
+    padding-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.experience h2 {
+    text-align: center;
+}
+
+.experience strong {
+    color: white;
+}
