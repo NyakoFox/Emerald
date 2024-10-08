@@ -1,0 +1,40 @@
+---
+title: Formatted Text
+description: Formatted text systems in games, and how to program them
+date: 1728351185
+---
+
+Textboxes in video games come in all shapes and sizes. Well, most of the time, they're rectangles, and they take up roughly 1/3rd of the screen. Bad start.
+
+But the important part isn't their fancy designs or slick animations -- it's their text. Whether it appears all at once, or letter by letter, it most likely has some sort of *formatting*.
+
+<>![UNDERTALE uses typewriter text, which shows a letter one at a time.](/posts/undertale-text.gif "And hey, look, that text is yellow!")</>
+
+----
+
+## The Naïve Approach
+
+I often see tutorials make a system where text gets parsed every draw. This is **very expensive**, especially during render time, where frames matter.
+
+It goes something like this:
+
+- We have some sort of default state, like the text being white, the font size, etc.
+- We loop through each character to draw, according to the state
+- If we encounter a modifier, change the state instead
+- Keep drawing each character (unless they're part of a modifier of course)
+
+This comes with a few flaws:
+
+1. **Code duplication** -- You may have to copy you modifier handling to both be in the update/step code *and* the draw/render code to make letter-by-letter text skip past modifiers,
+2. **Slow code** -- String manipulation is costly, and you don't want to be doing that very often, especially not a hundred times per render frame.
+3. **Spaghetti code** -- Handling modifiers and drawing characters both in the render function might lead to some ugly code.
+
+So... the current examples out there aren't that great. What should we do instead?
+
+----
+
+## The Node system
+
+No, not JavaScript.
+
+WIP: FINISH THIS

@@ -2,8 +2,8 @@ import fs from "fs/promises"
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import styles from "./page.module.css";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useMDXComponents } from "@/mdx-components";
 
 async function checkPostExists(slug) {
     const folder = "/posts/";
@@ -14,6 +14,8 @@ async function checkPostExists(slug) {
 
 async function getPostData(slug) {
     const folder = "/posts/";
+
+    const components = useMDXComponents({});
 
     return await compileMDX({
         source: await fs.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
@@ -27,7 +29,7 @@ async function getPostData(slug) {
             },
             parseFrontmatter: true,
         },
-        components: { Link },
+        components,
     });
 }
 
