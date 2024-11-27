@@ -1,4 +1,5 @@
-import fs from "fs/promises"
+import fs from "fs";
+import fsPromises from "fs/promises"
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeUnwrapImages from 'rehype-unwrap-images'
@@ -10,7 +11,7 @@ import { useMDXComponents } from "@/mdx-components";
 async function checkPostExists(slug) {
     const folder = "/posts/";
 
-    const fileExists = async (path) => !!(await fs.stat(process.cwd() + path).catch((e) => false));
+    const fileExists = async (path) => !!(await fsPromises.stat(process.cwd() + path).catch((e) => false));
     return await fileExists(folder + slug + ".mdx");
 }
 
@@ -19,10 +20,10 @@ async function getPostData(slug) {
 
     const components = useMDXComponents({});
 
-    const moonlightTheme = JSON.parse(await fs.readFile(process.cwd() + "/public/moonlight-ii.json", "utf8"));
+    const moonlightTheme = JSON.parse(fs.readFileSync(process.cwd() + "/moonlight-ii.json", "utf8"));
 
     return await compileMDX({
-        source: await fs.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
+        source: await fsPromises.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
         options: {
             mdxOptions: {
                 remarkPlugins: [

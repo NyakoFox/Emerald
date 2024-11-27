@@ -3,6 +3,7 @@ import createMDX from "@next/mdx";
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import rehypePrettyCode from 'rehype-pretty-code';
 import fs from "fs";
+import moonlightTheme from "./moonlight-ii.json" with { type: 'json' };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,7 +18,7 @@ const withMDX = createMDX({
         rehypePlugins: [
             rehypeUnwrapImages,
             [rehypePrettyCode, {
-                theme: JSON.parse(fs.readFileSync(process.cwd() + "/public/moonlight-ii.json", "utf8")),
+                theme: moonlightTheme,
                 keepBackground: false
             }]
         ],
