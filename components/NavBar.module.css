@@ -27,3 +27,31 @@
 .link:hover {
     scale: 1.1;
 }
+
+.text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: white;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .link {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .text {
+        display: none;
+    }
+
+    .icon {
+        display: inline-block;
+    }
+}

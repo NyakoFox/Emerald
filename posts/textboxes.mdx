@@ -33,8 +33,55 @@ So... the current examples out there aren't that great. What should we do instea
 
 ----
 
-## The Node system
+## The Node System
 
 No, not JavaScript.
 
-WIP: FINISH THIS
+The node system is a way to represent text as a list of nodes, where each node is a character or a modifier. This way, we can easily loop through each node and draw them accordingly.
+
+An example of a modifier node's structure is as follows:
+
+```lua {2} /#ff00ff/#ff00ff
+local node = {
+    type = "modifier",
+    command = "color",
+    arguments = "#ff00ff"
+}
+```
+
+This node would change the color of the following text to a magenta. Additionally, a text node would look like this:
+
+```lua {2}
+local node = {
+    type = "character",
+    character = "H"
+}
+```
+
+This node would draw the character "H" in the current state. If this node follows the previous modifier node, it would be drawn in magenta.
+
+### Constructing the Nodes
+
+Node construction can be as simple as you want it to be. A regex, a simple loop through the string, or even a custom parser. In [Kristal's text system](https://github.com/KristalTeam/Kristal/blob/main/src/engine/objects/text.lua#L204), we chose to loop through the string.
+
+Regex is most likely the most efficient way to do this, but not everyone knows regex, and I like to keep things simple anyway.
+
+### Processing the Nodes
+
+Once you have your nodes, you can loop through them and draw them accordingly. If your node is a character, draw it. If it's a modifier, change the state accordingly. Simple, right?
+
+### Kristal's Text System
+
+Talking about [Kristal](https://kristal.cc/) for a bit, we have a text system that uses this node system -- this is actually where I came up with the idea. In the function linked above, `textToNodes`, it takes an input string and returns a list of nodes. But there's also some extra features inside of it.
+
+In it, there's hardcoded handling for the `bind` modifier, which can either return normal text, or work as a modifier, depending on whether you're using controller or not.
+
+![Ralsei from DELTARUNE saying "Kris, you need to press [C] to open the menu!"](/posts/kristal-bind.png "[bind:menu] really working wonders here.")
+
+----
+
+## Conclusion
+
+This is very unfinished. I ran out of energy. I want to work on other things now thank you :D
+
+Come back later for more probably!

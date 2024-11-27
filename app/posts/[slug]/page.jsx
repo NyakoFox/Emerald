@@ -1,6 +1,8 @@
 import fs from "fs/promises"
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeUnwrapImages from 'rehype-unwrap-images'
+import rehypePrettyCode from 'rehype-pretty-code';
 import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 import { useMDXComponents } from "@/mdx-components";
@@ -17,6 +19,8 @@ async function getPostData(slug) {
 
     const components = useMDXComponents({});
 
+    const moonlightTheme = JSON.parse(await fs.readFile(process.cwd() + "/public/moonlight-ii.json", "utf8"));
+
     return await compileMDX({
         source: await fs.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
         options: {
@@ -24,7 +28,10 @@ async function getPostData(slug) {
                 remarkPlugins: [
                     remarkGfm,
                 ],
-                rehypePlugins: [],
+                rehypePlugins: [
+                    rehypeUnwrapImages,
+                    [rehypePrettyCode, { theme: moonlightTheme, keepBackground: false }],
+                ],
                 format: "mdx",
             },
             parseFrontmatter: true,
