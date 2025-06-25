@@ -7,6 +7,8 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 import { useMDXComponents } from "@/mdx-components";
+import { VFile } from "vfile";
+import { matter } from "vfile-matter";
 
 async function checkPostExists(slug) {
     const folder = "/posts/";
@@ -15,38 +17,20 @@ async function checkPostExists(slug) {
     return await fileExists(folder + slug + ".mdx");
 }
 
-async function getPostData(slug) {
-    const folder = "/posts/";
-
-    const components = useMDXComponents({});
-
-    const moonlightTheme = JSON.parse(fs.readFileSync(process.cwd() + "/moonlight-ii.json", "utf8"));
-
-    return await compileMDX({
-        source: await fsPromises.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
-        options: {
-            mdxOptions: {
-                remarkPlugins: [
-                    remarkGfm,
-                ],
-                rehypePlugins: [
-                    rehypeUnwrapImages,
-                    [rehypePrettyCode, { theme: moonlightTheme, keepBackground: false }],
-                ],
-                format: "mdx",
-            },
-            parseFrontmatter: true,
-        },
-        components,
-    });
-}
-
 export async function generateMetadata({ params, searchParams }, parent) {
     const { slug } = params;
 
     if (!(await checkPostExists(slug))) return notFound();
 
-    const { content, frontmatter } = await getPostData(slug);
+    const folder = "/posts/";
+
+    const source = await fsPromises.readFile(process.cwd() + folder + slug + ".mdx", "utf8");
+
+    // This API looks... very... interesting.
+    // Whatever, handling frontmatter ourselves is a LOT faster than using compileMDX and throwing away the MDX...
+    const vfile = new VFile(source);
+    matter(vfile, { strip: true });
+    const frontmatter = vfile.data.matter;
 
     return {
         title: frontmatter.title,
@@ -83,7 +67,27 @@ export default async function BlogPost(props) {
 
     if (!(await checkPostExists(slug))) return notFound();
 
-    const { content, frontmatter } = await getPostData(slug);
+    const folder = "/posts/";
+    const components = useMDXComponents({});
+    const moonlightTheme = JSON.parse(fs.readFileSync(process.cwd() + "/moonlight-ii.json", "utf8"));
+
+    const { content, frontmatter } = await compileMDX({
+        source: await fsPromises.readFile(process.cwd() + folder + slug + ".mdx", "utf8"),
+        options: {
+            mdxOptions: {
+                remarkPlugins: [
+                    remarkGfm,
+                ],
+                rehypePlugins: [
+                    rehypeUnwrapImages,
+                    [rehypePrettyCode, { theme: moonlightTheme, keepBackground: false }],
+                ],
+                format: "mdx",
+            },
+            parseFrontmatter: true,
+        },
+        components,
+    });
 
     return (
         <>

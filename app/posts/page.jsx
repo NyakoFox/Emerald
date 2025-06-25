@@ -1,8 +1,8 @@
 import fs from "fs/promises"
-import { compileMDX } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { VFile } from "vfile";
+import { matter } from "vfile-matter";
 
 export default async function Page(props) {
 
@@ -11,20 +11,14 @@ export default async function Page(props) {
 
     const posts = await Promise.all(ids.map(async (id) => {
         const source = await fs.readFile(`posts/${id}.mdx`, "utf8");
-        const { content, frontmatter } = await compileMDX({
-            source: source,
-            options: {
-                mdxOptions: {
-                    remarkPlugins: [
-                        remarkGfm
-                    ],
-                    rehypePlugins: [],
-                    format: "mdx"
-                },
-                parseFrontmatter: true
-            }
-        });
-        return { id, content, frontmatter };
+
+        // This API looks... very... interesting.
+        // Whatever, handling frontmatter ourselves is a LOT faster than using compileMDX and throwing away the MDX...
+        const vfile = new VFile(source);
+        matter(vfile, { strip: true });
+        const frontmatter = vfile.data.matter;
+
+        return { id, frontmatter };
     }));
 
     // reverse sort by post.frontmatter.date
