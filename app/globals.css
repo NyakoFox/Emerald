@@ -8,7 +8,7 @@ html {
   color-scheme: dark;
 }
 
-img {
+img, video {
   max-width: 100%;
 }
 

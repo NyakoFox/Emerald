@@ -1,0 +1,14 @@
+.figure {
+    background-color: #442200;
+    border-color: #FFAA00;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+
+.caption {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}

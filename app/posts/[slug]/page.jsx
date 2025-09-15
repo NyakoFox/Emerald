@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { useMDXComponents } from "@/mdx-components";
 import { VFile } from "vfile";
 import { matter } from "vfile-matter";
+import ContentWarning from "@/components/ContentWarning";
 
 async function checkPostExists(slug) {
     const folder = "/posts/";
@@ -68,7 +69,9 @@ export default async function BlogPost(props) {
     if (!(await checkPostExists(slug))) return notFound();
 
     const folder = "/posts/";
-    const components = useMDXComponents({});
+    const components = useMDXComponents({
+        ContentWarning : ContentWarning
+    });
     const moonlightTheme = JSON.parse(fs.readFileSync(process.cwd() + "/moonlight-ii.json", "utf8"));
 
     const { content, frontmatter } = await compileMDX({

@@ -1,0 +1,297 @@
+---
+title: "VVVVVV: The Depths"
+description: A look back at the April Fools project that got out of hand.
+date: 1757937553
+---
+
+[mothbeanie]: https://bsky.app/profile/mothbeanie.bsky.social
+[allison]: https://allisonfleischer.bandcamp.com/
+[terry-blog]: https://distractionware.com/blog/2025/06/featured-vvvvvv-level-vvvvvv-the-depths-by-nyakofox-mothbeanie-and-allison-fleischer/
+[download]: https://nyakofox.itch.io/vvvvvv-the-depths
+
+<ContentWarning>
+This post may contain swearing and crude humor, mainly due to mockups.
+Additionally, there will be mild spoilers for the April Fools VVVVVV mod, "The Depths".
+</ContentWarning>
+
+<>![First mention](/posts/the-depths/first-mention.png "The first mention of this project was... on the 11th of March?")</>
+
+On March 11th, 2025, I messaged my friend [mothbeanie][mothbeanie] about something we should add to the 2025 April Fools VVVVVV mod.
+That doesn't sound like a lot of time, but it's just a silly mod.
+
+----
+
+## Last Year
+
+Last year, I made a silly bait-and-switch mod, disguised as an official "3.0" update to the game, which contained a recreation of Cave Story's hardest area,
+the "Blood Stained Sanctuary" (or the "Sacred Grounds" if you're a fan of the fan translation).
+
+It seemed like a very simple idea: just make this game in another game. All I had to do was:
+
+- Port Cave Story's physics perfectly (aka, rewrite VVVVVV's physics engine but only if you're in the Cave Story area)
+- Add a scrolling camera (VVVVVV doesn't have a normal camera as rooms are static other than inside of The Tower)
+- Make a bunch of music
+- Make a bunch of art (I had someone help me with this!)
+- Actually recreate the maps
+- Add a whole bunch of new systems to VVVVVV
+- Program all of the enemies
+- Program the boss fight at the end (with a boss system)
+
+Uh... yeah, that's a lot. But at least I had time, right? Maybe like a month or so?
+
+I... started the week before April 1st. I thought to myself, "that was a difficult crunch, but I'll give myself plenty of time next year."
+
+----
+
+## This Year
+
+Next year arrived. And as April was approaching, I kept telling myself that I'll start soon. I'll come up with an idea, and I'll get started. Unfortunately for me, I had a contest level to work on!
+
+<>![Contest](/posts/the-depths/contest.png "A contest just started!")</>
+
+The VVVVVV Discord server's 2025 "Bingo Contest" was announced January 10th. A week later, the contest began, and would not end until March 2nd.
+Due to circumstances, I had to rush to make a level in a couple weeks. (You'll notice that me crunching is a very common theme here.)
+But either way, I finished my level, "Vermilion Blows Up A Sun", and felt it was pretty good.
+Judging for the contest levels, which I was *also* a part of, didn't end until March 30th. Results were posted on the same day.
+
+March... 30th?
+
+----
+
+## 480 Hours Remain
+
+I promise I won't do that every time.
+
+It's March 11th, and I just messaged mothbeanie about the mod idea (see above). After a bit of brainstorming, moth designed a cool grass tileset, and I started working on the water.
+
+<>![Water](/posts/the-depths/water.mp4 "The first thing is programmed! ... sort of.")</>
+
+Yes, the first thing I did was the water physics. They were nothing more than rectangles with waves,
+but that was good enough for me at the time, being someone who has never programmed water waves before.
+
+The next day, moth and I made some mockups.
+
+<>![Mockup 1](/posts/the-depths/mockup-1.png "My first mockup, where I thought a hotbar was a good idea. It wasn't.")</>
+
+That's pretty much the extent of what we did other than some more planning. We decided that some gameplay is good, because we can do coin challenges.
+
+----
+
+## 264 Hours Remain
+
+I had to do the title thing again.
+
+It's March 20th. A couple days earlier, I messaged mothbeanie about this year's mod, saying that we should scope down.
+
+<>![Scoping down](/posts/the-depths/scope-down.png "This'll definitely work.")</>
+
+The rest of the day was implementing fake "layers" (so solid tiles could be in front of water, and background tiles could be behind).
+Additionally, I changed how water looked, added waves for the bottom of water, made other entities interact with them, and tweaked the values.
+
+<>![Working Water](/posts/the-depths/working-water.mp4 "Suddenly, it looks pretty good!")</>
+<>![Both Sides](/posts/the-depths/both-sides.mp4 "Both sides of the water work, even in the same box!")</>
+<>![Fast Platform](/posts/the-depths/fast-platform.mp4 "Maybe the dynamic splashing code is TOO good...")</>
+
+The next day was mainly moth working on fish sprites and expanding the tileset. Not much to show, as all of the art DID make it in.
+
+On the 24th, I finally made water slow down entities.
+
+<>![Thick Water](/posts/the-depths/thick-water.mp4 "Look how slow Viridian gets! This'd be annoying in any other game, I'm sure.")</>
+
+The 25th was mainly mockups and planning for the item system. I started with this:
+
+<>![Initial Item System Mockup](/posts/the-depths/item-mockup-1.png "This is a terrible idea.")</>
+
+I didn't know how to show which one was currently being hovered over, or which ones were equipped. There was also no space for item names or descriptions.
+For this style, I wanted it to show the name and description for what you're selecting, probably at the bottom... but names should really appear for all of them...
+
+That's when I thought about a horizontal list... where equipped items got pinned to the top. That way, you could show tons of information for each item.
+
+<>![Item System Mockup 2](/posts/the-depths/item-mockup-2.png "This is better, but still not great.")</>
+
+Despite my mockup being a little unhinged, it was a good starting point for us to really visualize what the item system would look like.
+Unfortunately, this mockup was maybe TOO verbose, as it drops the 28ish items per screen to... 2 items per screen, with a little change.
+
+Thankfully, moth came up with this concept:
+
+<>![Moth's Mockup](/posts/the-depths/item-mockup-3.png "This is perfect!")</>
+
+Somehow, moth made an even more unhinged mockup, but it was a great combination of both.
+Display the information for the current selected item at the bottom, while showing a ton of items, but keep around their names.
+This was perfect.
+
+<>![Moth's Mockup... 2!](/posts/the-depths/item-mockup-4.png "It was originally going to scroll horizontally, but we changed that.")</>
+
+The most unhinged mockup yet, moth did some pixel art magic to show what it'd look like better. It's perfect!
+
+It's now the 27th, where most work got done in voice chats.
+
+<>![In-game Item System](/posts/the-depths/items-ingame.png "They look pretty good in-game.")</>
+
+Only a few days remain until April 1st, and we're only just now getting the item system in.
+
+Great.
+
+----
+
+## 96 Hours Remain
+
+I guess I'm not done with the title thing.
+
+It's now the 28th. The night before, moth wrote all of the information and descriptions for every single item in our huge item spreadsheet.
+
+<>![Items But Scrolling](/posts/the-depths/scrolling-items.mp4 "This wasn't done before.")</>
+
+I thought I'd start off making the item menu scrollable like what we planned. This honestly didn't take very long.
+
+<>![bro looks zonked out of his gourd](/posts/the-depths/zonked.png "Sometimes, we would get a little distracted.")</>
+
+The day was mainly doing item implementation. It's a bunch of very annoying manual labor, despite making a complex flexible item system.
+It turns out, if you have a ton of items, it sucks to implement those items. Especially all at once.
+
+<>![Next year, I'm going far more simple.](/posts/the-depths/simple.png "I word this as a joke, but it was starting to get to me.")</>
+
+So far, I've mostly just shown progress. Keep in mind, I've only been at this for a few days at this point...
+
+Either way, this must get done. On the 29th, [Allison Fleischer][allison] sent us some music she made for the mod.
+Both of us loved it. I said "its sooo freshwaterfishingcore..." and moth said "ITS SO CUTE...", with moth winning the "who can say things in a normal way" competition.
+
+It's 3 AM now, so I finish up the "got item" display and go to bed.
+
+<>![Got Item](/posts/the-depths/got-item.mp4 "It looks soooo cool...")</>
+
+----
+
+## INTERMISSION: The level itself?
+
+This is a short intermission, but I want to clarify that pretty much all content that WASN'T programming was made by moth, with the exception of MOST music.
+
+That means, moth was responsible for:
+- The gameplay
+- The scripting
+- The tiling (I did write a plugin to autotile our complex tileset, but still)
+- Any artwork
+- One music track
+- Near the end, they also helped with item implementation
+
+And I was responsible for:
+- Programming
+- One music track (which took 30 minutes)
+
+...yeah. I spent most of my time programming, and moth spent most of their time on everything else.
+And they STILL ran out of things to do, so I had them help with item implementation... It turns out making an entire fishing simulator is a LOT of programming!
+I was sleeping every night at around 4 AM, waking up early to get back to the grind and work all day. There weren't many breaks.
+Sometimes moth would take well-deserved breaks and play Isaac, and I'd... just program all day.
+Not moth's fault, of course, not at all. They were a massive help, but I didn't allocate enough time for us to do this.
+
+Burnout was imminent. But it has to be done. April 1st is in a few days.
+
+----
+
+## 72 Hours Remain
+
+We make bucket items, and moth scripts the bait upgrading system. I come up with the name "VVVVVV: The Depths" to work with the bait-and-switch, and we roll with it.
+
+<>![Title Mockup](/posts/the-depths/title-mockup.png "Despite saying the lettering was bad, I was actually proud of how I did. Unfortunately, moth didn't argue when I said it was bad...")</>
+
+Later on, moth sends me a better title, which I implement in-game. Additionally, moth does a little line cast animation for Viridian using the fishing rod!
+
+I... haven't started the main mechanic yet! I work on fishing all day, and this is the video from midnight:
+
+<>![Fishing](/posts/the-depths/fishing-start.mp4 "It's finally in! Sort of!")</>
+
+---
+
+## 48 Hours Remain
+
+I work on implementing key gates, while moth works on scripting. I don't really know what happened, because we were in call all day and we barely messaged.
+I was panicking and didn't have any time to talk to people. I was locked in.
+
+I finished the main mechanic. You can now catch fish.
+
+---
+
+## 24 Hours Remain
+
+It's almost time... it's the 31st, which means release is tomorrow.
+
+I don't have enough time.
+
+I work on buying, selling, and the enchiridion. And a whole bunch of other stuff I didn't document whatsoever.
+We make a bunch of mockups, but I'm not sure where any of them are.
+
+I stay up until 5 AM working. It's still not done. I'll finish tomorrow when I wake up, and we can release it.
+
+Working for this long without breaks really takes a toll on you. I've never felt physical effects from programming before, but this project did it.
+
+*I am so tired.*
+
+---
+
+## -6 Hours Remain
+
+It's April 1st. I wake up at 12, message moth "grind and rise" (intentionally out of order, because I'm quirky like that, or something)
+
+I jump in a voice chat with moth. I am so tired. I have a headache, but I take pain medication and continue. Release is TODAY, whenever we get this done.
+
+We finish pretty much everything required, and then did a few stretch goals.
+I make bobber gravity be separate from the player's gravity. I do a bunch of miscellaneous bug fixes and tweaks and changes.
+
+Discord voice chats go down for a bit... I message moth instead while we work.
+
+We realize that we never made a custom map, so we draw one up very quickly and slap it in.
+
+It's now 6 PM. We're done.
+
+*We're done.*
+
+I don't feel much of a sense of accomplishment. Or relief, even. I just feel gross. But it's over, and I don't have to work on it anymore.
+
+---
+
+## Hotfixes
+
+We released the mod right after implementing everything.
+
+Nothing was tested. Nobody played through the mod in full before release. We just... released it.
+
+We ended up having to make 6 hotfixes. Some scripts just didn't work, or you couldn't progress in certain areas.
+
+
+
+---
+
+## It's Over
+
+<>![I don't think about months for multiple months.](/posts/the-depths/multiple-months.png "I have no concept of time.")</>
+
+I messaged moth a day later, as it was a very difficult crunch for both of us. We agree that it we shouldn't let this happen again.
+I don't have good work habits, and I need to learn how to manage my time better. I need to take breaks, and NOT work for 16 hours straight.
+I need to learn to not push myself so much, and to give myself time to rest. We both think we could've (and should've) communicated better.
+
+But in the end, we made a pretty cool mod!
+
+---
+
+## Is It Really Over?
+
+The contest release was rushed near the end, and was unpolished in a lot of ways.
+
+A few months later, we came back to it! Polishing a few things, implementing some new items and features, and NOT working under a strict deadline.
+
+Controller support was added, real credits were added, the bait upgrading logic was completely changed, there were a LOT of QOL tweaks, and we did our first public release!
+
+...We compiled it with Visual Studio 2013, so it would run on Windows XP, which had its own challenges... so we had to release v1.1.1 after, but that's okay.
+
+---
+
+## Final Thoughts
+
+v1.1.1 is where it stands today. It's a pretty fun (and long) mod, and I really, really think people should check it out.
+It's free, and definitely a fresh take on the VVVVVV universe.
+
+Despite the difficult crunch we put ourselves through, I think that the end result is very, very cool. [Terry Cavanagh talked about it on his blog][terry-blog],
+
+And we aren't done with it, either. I think both of us would like to add more content to it in the future.
+
+If you'd like to play it, you can download it from [itch.io][download]. Thank you!
