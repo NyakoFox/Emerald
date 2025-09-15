@@ -80,6 +80,42 @@ In it, there's hardcoded handling for the `bind` modifier, which can either retu
 
 ----
 
+## Typewriter Text
+
+So now we have a simple way to parse modifiers ONCE, and display them in a very fast way, potentially every frame.
+
+What if we want our text to be written out slowly, like our Undertale example at the start of the post?
+
+### Dynamic Nodes
+
+Despite having a scary name, this is a rather easy system.
+
+Once more, you parse all of the nodes at the START. The moment your text system gets a string, parse it immediately and create a list of nodes.
+
+Now that you have your list of nodes, this is where we do something different -- we don't draw all of the nodes, we use a *different* list of nodes, the ones we SHOULD draw.
+
+So, let's keep a list of nodes to draw.
+
+### The Update Function
+
+If we want a character to be drawn every frame, let's do something like this:
+
+```lua
+---@param text string
+function self:setText(text)
+    self.nodes = self:processNodes(text)
+    self.nodes_to_draw = {}
+
+    self.progress = 0
+    self.delay = 0
+end
+
+function self:update()
+end
+```
+
+----
+
 ## Conclusion
 
 This is very unfinished. I ran out of energy. I want to work on other things now thank you :D
