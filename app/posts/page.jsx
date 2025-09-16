@@ -41,7 +41,7 @@ export default async function Page(props) {
                         <span className={styles.date}>
                             {(new Date(post.frontmatter.date * 1000)).toLocaleDateString()}
                         </span></div>
-                    <img src={post.frontmatter.image} />
+                    {/*<img src={post.frontmatter.image} />*/}
                     <div className={styles.description}>{post.frontmatter.description}</div>
                 </Link>
             })
