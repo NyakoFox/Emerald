@@ -36,7 +36,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     return {
         title: frontmatter.title,
         description: frontmatter.description,
-        image: "/pfps/selene.png",
+        image: frontmatter.image ?? "/pfps/selene.png",
         colorScheme: "dark",
         metadataBase: process.env.BASE_URL,
         openGraph: {
@@ -50,10 +50,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
             locale: "en_US",
             images: [
                 {
-                    url: "/pfps/selene.png",
+                    url: frontmatter.image ?? "/pfps/selene.png",
                     width: 512,
                     height: 512,
-                    alt: "Nyako",
+                    alt: frontmatter.title ?? "Nyako",
                 },
             ],
         },
