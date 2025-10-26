@@ -1,7 +1,7 @@
 import styles from "./NavBar.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGamepad, faHouse, faPencil, faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarWeek, faGamepad, faHouse, faPencil, faQuestion } from '@fortawesome/free-solid-svg-icons'
 
 export function MenuItem({ href, text, icon }) {
     return <Link className={styles.link} href={href}>
@@ -16,6 +16,6 @@ export default function NavBar() {
         <MenuItem href="/posts" text="Posts" icon={faPencil} />
         <MenuItem href="/projects" text="Projects" icon={faGamepad} />
         <MenuItem href="/about" text="About" icon={faQuestion} />
-        <MenuItem href="/uses" text="/uses" icon={faQuestion} />
+        <MenuItem href="/uses" text="/uses" icon={faCalendarWeek} />
     </div>
 }
