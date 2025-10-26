@@ -34,6 +34,15 @@ export default function Home() {
           </div>
           <div className={styles.description}>Learn more about me!</div>
         </Link>
+
+        <Link className={styles.section} href="/uses">
+          <div className={styles.header}>
+            <strong className={styles.title}>
+                /uses -&gt;
+            </strong>
+          </div>
+          <div className={styles.description}>See what I use on a daily basis!</div>
+        </Link>
       </div>
     </>
   )

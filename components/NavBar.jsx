@@ -16,5 +16,6 @@ export default function NavBar() {
         <MenuItem href="/posts" text="Posts" icon={faPencil} />
         <MenuItem href="/projects" text="Projects" icon={faGamepad} />
         <MenuItem href="/about" text="About" icon={faQuestion} />
+        <MenuItem href="/uses" text="/uses" icon={faQuestion} />
     </div>
 }

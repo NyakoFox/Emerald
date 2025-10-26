@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import styles from "./ProjectCard.module.css"; 
+import styles from "./ProjectCard.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProjectCard(props) {
     const { project } = props;
@@ -37,5 +39,6 @@ export default function ProjectCard(props) {
                 }
             </div>
         </div>
+        <FontAwesomeIcon icon={faChevronDown} className={styles.expand_icon} />
     </div>
 }

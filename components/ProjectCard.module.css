@@ -14,6 +14,7 @@
     width: 100%;
 
     padding-bottom: 0.25rem;
+    position: relative;
 }
 
 .project_wrapper:not(.expanded) {
@@ -24,7 +25,7 @@
     height: 0;
     overflow: hidden;
     interpolate-size: allow-keywords;
-    transition: height 0.2s ease;
+    transition: 0.2s ease;
 }
 
 
@@ -46,6 +47,33 @@
 .project_wrapper:not(.expanded):hover {
     border-color: rgba(255, 255, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.25);
+}
+
+.expand_icon {
+    opacity: 0;
+    position: absolute;
+
+    transition: 0.2s;
+
+    bottom: -1.5rem;
+    left: 50%;
+
+    pointer-events: none; /* optional: let clicks pass through */
+    transform-origin: center;
+    transform: translateX(-50%) rotate(0);
+}
+
+.project_wrapper::after {
+    font-size: 0.9rem;
+    color: lightgray;
+}
+
+.project_wrapper:hover .expand_icon {
+    opacity: 1;
+}
+
+.expanded .expand_icon {
+    transform: translateX(-50%) rotate(180deg);
 }
 
 .project_card {

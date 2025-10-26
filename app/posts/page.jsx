@@ -28,6 +28,9 @@ export default async function Page(props) {
     });
 
     return <>
+        <h1>Posts</h1>
+        <p>Not a great writer, but... I write about programming, game development, and other random stuff.</p>
+        <br/>
         {
             posts.map((post) => {
                 return <Link className={styles.post} key={post.id} href={`/posts/${post.id}`}>

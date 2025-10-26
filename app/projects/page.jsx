@@ -157,8 +157,9 @@ export default function Projects() {
 
     return <>
         <h1>Projects</h1>
-        <p>Keep in mind I have two separate GitHub accounts, and a ton of unfinished projects.</p>
+        <p>I have two separate GitHub accounts, and a ton of unfinished projects... All that's here is notable things!</p>
         <br />
+        <div>
         {
             projects.map((category, i) => {
                 const content = category.content.map((project, j) => <ProjectCard key={`${project.title} ${i} ${j}`} project={project} />);
@@ -171,5 +172,6 @@ export default function Projects() {
                 </div>)
             })
         }
+        </div>
     </>
 }
