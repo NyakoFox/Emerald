@@ -13,7 +13,6 @@
 
 .category_child {
     margin-left: 2rem;
-    margin-right: 2rem;
     margin-top: 1rem;
 
     display: flex;
@@ -37,7 +36,6 @@
 
 .entry_child {
     margin-left: 2rem;
-    margin-right: 2rem;
 
     display: flex;
     flex-direction: column;
